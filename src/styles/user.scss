@@ -1,0 +1,25 @@
+.user_container{
+    padding: 20px;
+    button{
+        border: 1px solid black;
+        width: 70px;
+        height: 30px;
+        border-radius: 10px;
+        color: white;
+        font-weight: 700;
+        margin-right: 5px;
+        
+    }
+    .edit{
+        background-color: rgb(45, 187, 45);
+        &:hover{
+            background-color: rgb(31, 164, 31);
+        }
+    }
+    .remove{
+        background-color: rgb(229, 54, 54);
+        &:hover{
+            background-color: rgb(208, 51, 51);
+        }
+    }
+}
