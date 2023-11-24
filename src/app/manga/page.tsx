@@ -3,10 +3,12 @@ import "../../styles/manga.scss";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import EditManga from "./editManga";
+import AddChapter from "./addChapter";
 export default function Home() {
   const router = useRouter();
   const [mangaData, setMangaData] = useState<any>();
   const [editData, setEditData] = useState<any>();
+  const [isUpdate, setIsUpdate] = useState<boolean>(false);
   useEffect(() => {
     async function getdata() {
       const res = await fetch(`http://localhost:8000/api/manga`).then((res) =>
@@ -85,7 +87,10 @@ export default function Home() {
                       <td className="px-6 py-4">
                         <button
                           className="edit"
-                          onClick={() => setEditData(item)}
+                          onClick={() => {
+                            setEditData(item);
+                            setIsUpdate(true);
+                          }}
                         >
                           edit
                         </button>
@@ -95,6 +100,15 @@ export default function Home() {
                         >
                           remove
                         </button>
+                        <button
+                          className="add_chapter"
+                          onClick={() => {
+                            setEditData(item);
+                            setIsUpdate(false);
+                          }}
+                        >
+                          add chapter
+                        </button>
                       </td>
                     </tr>
                   );
@@ -103,7 +117,11 @@ export default function Home() {
           </table>
         </div>
         <div className="detail">
-          <EditManga props={editData} />
+          {isUpdate ? (
+            <EditManga props={editData} />
+          ) : (
+            <AddChapter props={editData} />
+          )}
         </div>
       </div>
     </>
