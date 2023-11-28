@@ -1,8 +1,9 @@
 .manga_container{
     width: 100%;
     border: 1px solid black;
-    // display: grid;
-    // grid-template-columns: 60% 39%;
+    height: 100vh;
+    max-height: 800px;
+    overflow: auto;
     button{
         border: 1px solid black;
         width: 70px;
@@ -18,7 +19,7 @@
     }
     
     .detail{
-        width: 39%;
+        width: 40%;
         // height: 100vh;
         border: 1px solid rgba(12,12,12,0.2);
         border-radius: 12px;

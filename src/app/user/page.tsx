@@ -9,8 +9,8 @@ export default function Home() {
   const [editData, setEditData] = useState<any>();
   useEffect(() => {
     async function getdata() {
-      const res = await fetch(`http://localhost:8000/api/users`).then((res) =>
-        res.json()
+      const res: any = await fetch(`http://localhost:8000/api/users`).then(
+        (res) => res.json()
       );
       setUserData(res);
     }
@@ -19,23 +19,47 @@ export default function Home() {
   return (
     <>
       <div className="user_container">
-        <div className="user_table relative overflow-x-auto">
-          <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+        <div className="relative overflow-x-auto user_table ">
+          <table className="overflow-auto text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
             <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
               <tr>
                 <th scope="col" className="px-6 py-3">
                   Id
                 </th>
-                <th scope="col" className="px-6 py-3">
+                <th
+                  scope="col"
+                  className="px-6 py-3"
+                  style={{
+                    width: "auto",
+                  }}
+                >
                   Username
                 </th>
-                <th scope="col" className="px-6 py-3">
+                <th
+                  scope="col"
+                  className="px-6 py-3"
+                  style={{
+                    width: "auto",
+                  }}
+                >
                   Email
                 </th>
-                <th scope="col" className="px-6 py-3">
+                <th
+                  scope="col"
+                  className="px-6 py-3"
+                  style={{
+                    width: "auto",
+                  }}
+                >
                   Role
                 </th>
-                <th scope="col" className="px-6 py-3 text-center">
+                <th
+                  scope="col"
+                  className="px-6 py-3 text-center"
+                  style={{
+                    width: "auto",
+                  }}
+                >
                   function
                 </th>
               </tr>
@@ -54,10 +78,36 @@ export default function Home() {
                       >
                         {item.id}
                       </th>
-                      <td className="px-6 py-4">{item.username}</td>
-                      <td className="px-6 py-4">{item.email}</td>
-                      <td className="px-6 py-4">{item.role}</td>
-                      <td className="px-6 py-4">
+                      <td
+                        className="px-6 py-4"
+                        style={{
+                          width: "auto",
+                        }}
+                      >
+                        {item.username}
+                      </td>
+                      <td
+                        className="px-6 py-4"
+                        style={{
+                          width: "auto",
+                        }}
+                      >
+                        {item.email}
+                      </td>
+                      <td
+                        className="px-6 py-4"
+                        style={{
+                          width: "auto",
+                        }}
+                      >
+                        {item.role}
+                      </td>
+                      <td
+                        className="px-6 py-4"
+                        style={{
+                          width: "auto",
+                        }}
+                      >
                         <button
                           className="edit"
                           onClick={() => setEditData(item)}

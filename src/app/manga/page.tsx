@@ -9,6 +9,7 @@ export default function Home() {
   const [mangaData, setMangaData] = useState<any>();
   const [editData, setEditData] = useState<any>();
   const [isUpdate, setIsUpdate] = useState<boolean>(false);
+  const [isCreate, setIsCreate] = useState<boolean>(false);
   useEffect(() => {
     async function getdata() {
       const res = await fetch(`http://localhost:8000/api/manga`).then((res) =>
@@ -105,6 +106,7 @@ export default function Home() {
                           onClick={() => {
                             setEditData(item);
                             setIsUpdate(false);
+                            setIsCreate(true);
                           }}
                         >
                           add chapter
@@ -119,8 +121,10 @@ export default function Home() {
         <div className="detail">
           {isUpdate ? (
             <EditManga props={editData} />
-          ) : (
+          ) : isCreate ? (
             <AddChapter props={editData} />
+          ) : (
+            <div></div>
           )}
         </div>
       </div>
